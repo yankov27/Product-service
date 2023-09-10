@@ -2,6 +2,7 @@ package com.developer.productservice.controller;
 
 import com.developer.productservice.entity.ProductEntity;
 import com.developer.productservice.service.ProductService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,13 +11,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/product")
+@AllArgsConstructor
+
 public class ProductController {
 
     private final ProductService productService;
-
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -25,8 +24,8 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<ProductEntity> findAllProducts() {
-        return productService.findAllProducts();
+    public List<ProductEntity> getAllProducts() {
+        return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
